@@ -164,7 +164,7 @@ public class RTMPHosterKit {
     }
 
     /**
-     *  Native function
+     *  Native function (JRTMPHosterImpl)
      */
     private native long nativeCreate(Object obj);
     private native void nativeSetAudioEnable(boolean enabled);

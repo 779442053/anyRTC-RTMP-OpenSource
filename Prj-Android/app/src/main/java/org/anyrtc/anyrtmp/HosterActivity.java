@@ -37,6 +37,8 @@ public class HosterActivity extends Activity implements RTMPHosterHelper {
     private RTMPHosterKit mHoster = null;
 
     private TextView mTxtStatus = null;
+
+    // 来自wbertc的SurfaceViewRenderer和VideoRenderer
     private SurfaceViewRenderer mSurfaceView = null;
     private VideoRenderer mRenderer = null;
 

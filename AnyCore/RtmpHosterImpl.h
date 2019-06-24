@@ -81,6 +81,7 @@ private:
 	int					req_h_;
 	int					v_width_;
 	int					v_height_;
+	// 采集数据
 	std::unique_ptr<cricket::VideoCapturer>	video_capturer_;
 	VideoFilter			video_filter_;
 

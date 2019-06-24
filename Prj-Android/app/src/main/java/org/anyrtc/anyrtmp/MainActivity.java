@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         {//* Init UI
             mEditRtmpUrl = (EditText) findViewById(R.id.edit_rtmp_url);
+            mEditRtmpUrl.setText("rtmp://172.17.229.2:1935/fx/1");
         }
         AnyRTMP.Inst();
     }
@@ -47,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         if (view.getId() == R.id.btn_start_live) {
+            // 推流
             Intent it = new Intent(this, HosterActivity.class);
             Bundle bd = new Bundle();
             bd.putString("rtmp_url", rtmpUrl);
             it.putExtras(bd);
             startActivity(it);
         } else {
+            // 拉流
             Intent it = new Intent(this, GuestActivity.class);
             Bundle bd = new Bundle();
             bd.putString("rtmp_url", rtmpUrl);

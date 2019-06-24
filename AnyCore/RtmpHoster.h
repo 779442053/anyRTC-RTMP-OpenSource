@@ -23,6 +23,7 @@
 #include "LIV_Export.h"
 #include "RTMPCommon.h"
 
+// RTMP推流器事件
 class RTMPHosterEvent
 {
 public:
@@ -37,6 +38,8 @@ public:
 	virtual void OnRtmpStreamClosed() = 0;
 };
 
+
+// RTMP推流器接口
 class LIV_API RTMPHoster
 {
 public:

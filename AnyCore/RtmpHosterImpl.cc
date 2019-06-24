@@ -31,6 +31,7 @@ RTMPHoster* RTMPHoster::Create(RTMPHosterEvent&callback)
 {
 	return new RtmpHosterImpl(callback);
 }
+
 void RTMPHoster::Destory(RTMPHoster*hoster)
 {
 	RtmpHosterImpl* impl = (RtmpHosterImpl*)hoster->GotSelfPtr();
@@ -50,7 +51,7 @@ RtmpHosterImpl::RtmpHosterImpl(RTMPHosterEvent&callback)
 	if (av_rtmp_streamer_ == NULL)
 		av_rtmp_streamer_ = AnyRtmpstreamer::Create(*this);
 
-	SetVideoMode(RTMP_Video_SD);
+	SetVideoMode(RTMP_Video_720P);
 }
 
 
@@ -223,8 +224,10 @@ void RtmpHosterImpl::AddVideoCapturer_w(void* handle)
 	if (video_capturer_ != nullptr) {
 		rtc::VideoSinkWants wants;
 		wants.rotation_applied = true;
+		// 视频数据本地预览
 		if(video_render_ != NULL)
 			video_capturer_->AddOrUpdateSink(video_render_, wants);
+		// 视频数据分发处理
 		video_capturer_->AddOrUpdateSink(&video_filter_, wants);
 
 		{
@@ -314,6 +317,7 @@ void RtmpHosterImpl::OnRecordAudio(const void* audioSamples, const size_t nSampl
 	const size_t nBytesPerSample, const size_t nChannels, const uint32_t samplesPerSec, const uint32_t totalDelayMS)
 {
 	webrtc::AudioSinkInterface::Data audio((int16_t*)audioSamples, nSamples, samplesPerSec, nChannels, totalDelayMS);
+	// 音频数据获取然后分发，本地并不播放
 	((webrtc::AnyRtmpStreamerImpl*)av_rtmp_streamer_)->GetAudioSink()->OnData(audio);
 }
 
