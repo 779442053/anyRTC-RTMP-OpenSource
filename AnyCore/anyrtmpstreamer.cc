@@ -20,7 +20,8 @@
 #include "webrtc/media/base/videocommon.h"
 #include "webrtc/media/engine/webrtcvideocapturerfactory.h"
 #include "webrtc/modules/audio_device/audio_device_impl.h"
-
+#include "logger.h"
+using namespace logger;
 AnyRtmpstreamer* AnyRtmpstreamer::Create(AnyRtmpstreamerEvent&callback)
 {
 	return new webrtc::AnyRtmpStreamerImpl(callback);
@@ -155,6 +156,7 @@ void AnyRtmpStreamerImpl::OnEncodeDataCallback(bool audio, uint8_t *p, uint32_t 
 
 void AnyRtmpStreamerImpl::OnRtmpConnected()
 {
+  debug() << "OnRtmpConnected";
 	StartEncoder();
 	callback_.OnStreamOk();
 }

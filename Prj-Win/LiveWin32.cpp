@@ -16,7 +16,10 @@
 * your programs, too.
 * See the GNU LICENSE file for more info.
 */
+#define _CRT_SECURE_NO_WARNINGS
 #include "stdafx.h"
+#include <stdint.h>
+#include <stdio.h>
 #include "LiveWin32.h"
 #include "LiveWin32Dlg.h"
 
@@ -41,6 +44,10 @@ CLiveWin32App::CLiveWin32App()
 
 	// TODO:  在此处添加构造代码，
 	// 将所有重要的初始化放置在 InitInstance 中
+	AllocConsole();
+	freopen("conout$", "w", stdout);
+	printf("控制台!-_-\n");
+
 }
 
 

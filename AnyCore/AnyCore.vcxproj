@@ -175,6 +175,7 @@
     <ClCompile Include="anyrtmpcore.cc" />
     <ClCompile Include="anyrtmplayer.cc" />
     <ClCompile Include="anyrtmpstreamer.cc" />
+    <ClCompile Include="logger.cpp" />
     <ClCompile Include="plybuffer.cc" />
     <ClCompile Include="plydecoder.cc" />
     <ClCompile Include="RtmpGuesterImpl.cc" />
@@ -191,6 +192,7 @@
     <ClInclude Include="anyrtmplayer_interface.h" />
     <ClInclude Include="anyrtmpstreamer.h" />
     <ClInclude Include="anyrtmpstream_interface.h" />
+    <ClInclude Include="logger.h" />
     <ClInclude Include="pluginaac.h" />
     <ClInclude Include="plybuffer.h" />
     <ClInclude Include="plydecoder.h" />
