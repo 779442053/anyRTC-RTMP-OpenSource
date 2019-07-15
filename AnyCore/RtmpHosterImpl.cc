@@ -229,11 +229,14 @@ void RtmpHosterImpl::AddVideoCapturer_w(void* handle)
 			video_capturer_->AddOrUpdateSink(video_render_, wants);
 		// 视频数据分发处理
 		video_capturer_->AddOrUpdateSink(&video_filter_, wants);
-
+		//https://chromium.googlesource.com/external/webrtc/+/c11b18483749b7f37559221b8401d24b9f5229f5%5E!/
 		{
 			cricket::VideoFormat highest_asked_format;
-			highest_asked_format.Construct(req_w_, req_h_, cricket::VideoFormat::FpsToInterval(30), cricket::FourCC::FOURCC_NV12);
+			req_w_ = 640;
+			req_h_ = 480;
+			highest_asked_format.Construct(req_w_, req_h_, cricket::VideoFormat::FpsToInterval(30), cricket::FourCC::/*FOURCC_NV12*/FOURCC_MJPG);
 			cricket::VideoFormat capture_format;
+			//要求的图像格式默认是Capture Requested NV12 1280x720x30 ？
 			if (!video_capturer_->GetBestCaptureFormat(highest_asked_format,
 				&capture_format)) {
 				LOG(LS_WARNING) << "Unsupported format:"
